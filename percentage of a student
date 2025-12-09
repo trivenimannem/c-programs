@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    float marks, sum = 0, percentage;
+    printf("Enter number of subjects: ");
+    scanf("%d", &n);
+    printf("Enter marks of %d subjects:\n", n);
+    for(i = 0; i < n; i++) {
+        scanf("%f", &marks);
+        sum += marks;
+    }
+    percentage = (sum / (n * 100)) * 100;
+    printf("\nTotal Marks = %f\n", sum);
+    printf("Percentage = %f\n", percentage);
+
+    return 0;
+}
