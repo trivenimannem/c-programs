@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 int main() {
     int m1, m2, m3, m4, m5, m6;
     printf("Enter marks of six subjects:\n");
@@ -11,6 +10,5 @@ int main() {
     printf("Subject 4: %d\n", m4);
     printf("Subject 5: %d\n", m5);
     printf("Subject 6: %d\n", m6);
-
     return 0;
 }
