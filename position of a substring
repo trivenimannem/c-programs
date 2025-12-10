@@ -1,0 +1,27 @@
+#include <stdio.h>
+int main() {
+    char str[200], sub[100];
+    int i = 0, j, k, found = 0;
+    gets(str);
+    gets(sub);
+    while (str[i] != '\0') {
+        if (str[i] == sub[0]) {
+            k = i;
+            j = 0;
+            while (str[k] == sub[j] && sub[j] != '\0') {
+                k++;
+                j++;
+            }
+            if (sub[j] == '\0') {
+                found = 1;
+                break;
+            }
+        }
+        i++;
+    }
+    if (found)
+        printf("Substring found at position %d", i + 1); 
+    else
+        printf("Substring not found");
+    return 0;
+}
