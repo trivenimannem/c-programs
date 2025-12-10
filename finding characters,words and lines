@@ -1,0 +1,20 @@
+#include <stdio.h>
+int main(){
+    char str[500];
+    int i=0,chars=0,words=0,lines=1;
+    fgets(str,500,stdin);
+    while(str[i]!='\0'){
+        chars++;
+        if(str[i]==' ' && str[i+1]!=' ' && str[i+1]!='\0')
+            words++;
+        if(str[i]=='\n')
+            lines++;
+        i++;
+    }
+    if(chars>0)
+        words++;
+    printf("Characters: %d\n",chars);
+    printf("Words: %d\n",words);
+    printf("Lines: %d",lines);
+    return 0;
+}
