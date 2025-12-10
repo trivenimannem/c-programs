@@ -1,0 +1,28 @@
+#include <stdio.h>
+int main() {
+    char str[200], word[50];
+    int i = 0, j = 0, k, found = 0;
+    gets(str);
+    gets(word);
+    while (str[i] != '\0') {
+        if (str[i] == word[0]) {
+            k = i;
+            j = 0;
+            while (str[k] == word[j] && word[j] != '\0') {
+                k++;
+                j++;
+            }
+            if (word[j] == '\0') {
+                found = 1;
+                break;
+            }
+        }
+        i++;
+    }
+
+    if (found)
+        printf("Word found at position %d", i + 1);   // 1-based index
+    else
+        printf("Word not found");
+    return 0;
+}
