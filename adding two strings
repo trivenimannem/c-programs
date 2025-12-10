@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main() 
+{
+    char str1[100], str2[100], str[200];
+    int i = 0, j = 0;
+    scanf("%s", str1);
+    scanf("%s", str2);
+    while (str1[i] != '\0')
+    {
+        result[i] = str1[i];
+        i++;
+    }
+    while (str2[j] != '\0') {
+        str[i] = str2[j];
+        i++;
+        j++;
+    }
+    str[i] = '\0';
+
+    printf("%s", str);
+
+    return 0;
+}
