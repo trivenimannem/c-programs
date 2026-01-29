@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+class Calculator {
+private:
+    float a, b;  
+
+public:
+    
+    void setValues(float x, float y) {
+        a = x;
+        b = y;
+    }
+    float add() {
+        return a + b;
+    }
+
+    float subtract() {
+        return a - b;
+    }
+
+    float multiply() {
+        return a * b;
+    }
+
+    float divide() {
+        if (b == 0) {
+            cout << "Division by zero is not possible!" << endl;
+            return 0;
+        }
+        return a / b;
+    }
+};
+
+int main() {
+    Calculator calc; 
+
+    float x, y;
+    cout << "Enter two numbers: ";
+    cin >> x >> y;
+
+    calc.setValues(x, y);
+
+    cout << "Addition = " << calc.add() << endl;
+    cout << "Subtraction = " << calc.subtract() << endl;
+    cout << "Multiplication = " << calc.multiply() << endl;
+    cout << "Division = " << calc.divide() << endl;
+
+    return 0;
+}
