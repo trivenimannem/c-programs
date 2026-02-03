@@ -1,1 +1,12 @@
-
+#include<iostream>
+using namespace std;
+int main()
+{
+int sum=0,a[5]={3,44,56,73,22};
+for(int i=0;i<5;i++)
+{
+  sum=sum+a[i];
+}
+cout<<"Sum of elements in array:"<<sum<<endl;
+return 0;
+}
