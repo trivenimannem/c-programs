@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+    
+    Node(int value) {
+        data = value;
+        next = nullptr;
+    }
+};
+
+// Function to calculate sum
+int sumList(Node* head) {
+    int sum = 0;
+    Node* current = head;
+
+    while (current != nullptr) {
+        sum += current->data;
+        current = current->next;
+    }
+
+    return sum;
+}
+
+int main() {
+    // Creating linked list: 10 -> 20 -> 30
+    Node* head = new Node(10);
+    head->next = new Node(20);
+    head->next->next = new Node(30);
+
+    cout << "Sum of elements: " << sumList(head);
+
+    return 0;
+}
