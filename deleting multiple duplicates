@@ -1,0 +1,74 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+Node* insertEnd(Node* head, int value) {
+    Node* newNode = new Node();
+    newNode->data = value;
+    newNode->next = NULL;
+
+    if (head == NULL)
+        return newNode;
+
+    Node* temp = head;
+    while (temp->next != NULL)
+        temp = temp->next;
+
+    temp->next = newNode;
+    return head;
+}
+
+int removeDuplicates(Node* head) {
+    int sum = 0;
+    Node* current = head;
+
+    while (current != NULL) {
+        Node* prev = current;
+        Node* temp = current->next;
+
+        while (temp != NULL) {
+            if (temp->data == current->data) {
+                sum += temp->data;
+                prev->next = temp->next;
+                delete temp;
+                temp = prev->next;
+            } else {
+                prev = temp;
+                temp = temp->next;
+            }
+        }
+        current = current->next;
+    }
+    return sum;
+}
+
+void display(Node* head) {
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* head = NULL;
+
+    head = insertEnd(head, 10);
+    head = insertEnd(head, 20);
+    head = insertEnd(head, 10);
+    head = insertEnd(head, 30);
+    head = insertEnd(head, 20);
+    head = insertEnd(head, 40);
+
+    int sum = removeDuplicates(head);
+
+    cout << sum << endl;
+    display(head);
+
+    return 0;
+}
