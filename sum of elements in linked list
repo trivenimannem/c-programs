@@ -11,7 +11,6 @@ struct Node {
     }
 };
 
-// Function to calculate sum
 int sumList(Node* head) {
     int sum = 0;
     Node* current = head;
@@ -25,7 +24,6 @@ int sumList(Node* head) {
 }
 
 int main() {
-    // Creating linked list: 10 -> 20 -> 30
     Node* head = new Node(10);
     head->next = new Node(20);
     head->next->next = new Node(30);
