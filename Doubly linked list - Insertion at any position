@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int val) {
+        data = val;
+        next = NULL;
+    }
+};
+
+void insertAtPosition(Node*& head, int val, int pos) {
+    Node* newNode = new Node(val);
+
+    if (head == NULL) {
+        newNode->next = newNode;
+        head = newNode;
+        return;
+    }
+
+    if (pos == 1) {
+        Node* temp = head;
+        while (temp->next != head) {
+            temp = temp->next;
+        }
+        newNode->next = head;
+        temp->next = newNode;
+        head = newNode;
+        return;
+    }
+
+    Node* temp = head;
+    for (int i = 1; i < pos - 1 && temp->next != head; i++) {
+        temp = temp->next;
+    }
+
+    newNode->next
