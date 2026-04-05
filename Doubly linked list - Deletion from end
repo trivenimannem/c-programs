@@ -1,0 +1,65 @@
+#include <iostream>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int val) {
+        data = val;
+        next = NULL;
+    }
+};
+
+void deleteAtEnd(Node*& head) {
+    if (head == NULL) return;
+
+    if (head->next == head) {
+        delete head;
+        head = NULL;
+        return;
+    }
+
+    Node* temp = head;
+
+    while (temp->next->next != head) {
+        temp = temp->next;
+    }
+
+    Node* last = temp->next;
+    temp->next = head;
+
+    delete last;
+}
+
+void display(Node* head) {
+    if (head == NULL) return;
+
+    Node* temp = head;
+    do {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    } while (temp != head);
+
+    cout << "(back to head)";
+}
+
+int main() {
+    Node* head = NULL;
+
+    Node* n1 = new Node(10);
+    Node* n2 = new Node(20);
+    Node* n3 = new Node(30);
+
+    head = n1;
+    n1->next = n2;
+    n2->next = n3;
+    n3->next = head;
+
+    deleteAtEnd(head);
+
+    display(head);
+
+    return 0;
+}
