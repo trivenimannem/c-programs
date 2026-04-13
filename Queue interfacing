@@ -1,0 +1,91 @@
+#include <iostream>
+using namespace std;
+class Queue {
+public:
+    virtual void enqueue(int element) = 0;
+    virtual int dequeue() = 0;
+    virtual int front() = 0;
+    virtual bool isEmpty() = 0;
+    virtual int size() = 0;
+
+    virtual ~Queue() {}
+};
+class ArrayQueue : public Queue {
+private:
+    int* a;
+    int capacity;
+    int frontIndex;
+    int rearIndex;
+    int count;
+public: 
+    ArrayQueue(int size) {
+        capacity = size;
+        a = new int[capacity];
+        frontIndex = 0;
+        rearIndex = -1;
+        count = 0;
+    } 
+    void enqueue(int element) override {
+        if (count == capacity) {
+            cout << "Queue Overflow\n";
+            return;
+        }
+        rearIndex = (rearIndex + 1) % capacity;
+        a[rearIndex] = element;
+        count++;
+    } 
+    int dequeue() override {
+        if (isEmpty()) {
+            cout << "Queue Underflow\n";
+            return -1;
+        }
+        int element = a[frontIndex];
+        frontIndex = (frontIndex + 1) % capacity;
+        count--;
+        return element;
+    }
+    int front() override {
+        if (isEmpty()) {
+            cout << "Queue is empty\n";
+            return -1;
+        }
+        return a[frontIndex];
+    }
+    bool isEmpty() override {
+        return count == 0;
+    }
+
+    int size() override {
+        return count;
+    }  
+    ~ArrayQueue() {
+        delete[] a;
+    }
+};
+int main() {
+    ArrayQueue q(5);
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+    q.enqueue(40);
+
+    cout << "Front element: " << q.front() << endl;
+
+    cout << "Dequeued: " << q.dequeue() << endl;
+    cout << "Dequeued: " << q.dequeue() << endl;
+
+    cout << "Front element: " << q.front() << endl;
+
+    cout << "Queue size: " << q.size() << endl;
+
+    q.enqueue(50);
+    q.enqueue(60);
+
+    cout << "Queue size after enqueue: " << q.size() << endl;
+
+    while (!q.isEmpty()) {
+        cout << "Removing: " << q.dequeue() << endl;
+    }
+
+    return 0;
+}
