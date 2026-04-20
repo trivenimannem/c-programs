@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+struct Node{
+	int data;
+	Node* right;
+	Node* left;
+};
+
+class BinaryTree{
+	Node* head;
+	
+	public:
+		BinaryTree()
+		{
+			head=NULL;
+			
+		}
+		
+		void insert(int val)
+		{
+		Node* newnode=new Node();
+		newnode->data=val;
+		newnode->left=NULL;
+		newnode->right=NULL;
+	//	head=newnode;	
+		
+		if(head==NULL)
+		{
+			head=newnode;
+			
+		}
+		else{
+			if(head->left==NULL)
+          	head->left=newnode;
+			else if(head->right==NULL)
+			head->right=newnode;
+			
+		}
+	void display()
+	{
+			cout<<endl;
+			cout<<head<<endl;
+		Node* temp=head->left ;
+		Node* curr=head->right;
+		//	cout<<head<<endl;
+		while(temp!=NULL||curr!=NULL)
+		{
+			cout<<temp->data <<"<-"<<endl;
+			cout<<curr->data<<"->"<<endl;
+			temp=temp->left ;
+			curr=curr->right ;		
+		 } 
+	}
+};
+int main()
+ { 
+ 
+ BinaryTree p;
+ p.insert(20);
+ p.insert(30);
+ p.insert(40);
+ p.display();
+ return 0;	
+}
